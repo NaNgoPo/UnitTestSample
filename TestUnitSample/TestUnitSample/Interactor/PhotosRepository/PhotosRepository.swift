@@ -14,4 +14,6 @@ class PhotosRepository: NSObject {
       handler(status)
     }
   }
+  func fetchAllThumb(){
+  }
 }

@@ -31,6 +31,9 @@
 		9749AA9821CB4315000CD9B1 /* SwipeChoosenViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AA9621CB4315000CD9B1 /* SwipeChoosenViewCell.swift */; };
 		9749AA9921CB4315000CD9B1 /* SwipeChoosenViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9749AA9721CB4315000CD9B1 /* SwipeChoosenViewCell.xib */; };
 		9749AA9C21CB780C000CD9B1 /* FoscusMarkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AA9B21CB780C000CD9B1 /* FoscusMarkLayer.swift */; };
+		9749AA9E21CB8748000CD9B1 /* IndicateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AA9D21CB8748000CD9B1 /* IndicateLayer.swift */; };
+		9749AAA221CB923A000CD9B1 /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AAA021CB923A000CD9B1 /* UploadCell.swift */; };
+		9749AAA321CB923A000CD9B1 /* UploadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9749AAA121CB923A000CD9B1 /* UploadCell.xib */; };
 		9A15A7D94DD79BB093727EAB /* Pods_TestUnitSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28ED33D17C134FBEA3995AEC /* Pods_TestUnitSample.framework */; };
 		D26788DBE1339FF17DBA89AD /* Pods_TestUnitSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31B65E28DA200267C1A312A /* Pods_TestUnitSampleUITests.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +92,9 @@
 		9749AA9621CB4315000CD9B1 /* SwipeChoosenViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeChoosenViewCell.swift; sourceTree = "<group>"; };
 		9749AA9721CB4315000CD9B1 /* SwipeChoosenViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeChoosenViewCell.xib; sourceTree = "<group>"; };
 		9749AA9B21CB780C000CD9B1 /* FoscusMarkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoscusMarkLayer.swift; sourceTree = "<group>"; };
+		9749AA9D21CB8748000CD9B1 /* IndicateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateLayer.swift; sourceTree = "<group>"; };
+		9749AAA021CB923A000CD9B1 /* UploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCell.swift; sourceTree = "<group>"; };
+		9749AAA121CB923A000CD9B1 /* UploadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadCell.xib; sourceTree = "<group>"; };
 		DB8B32341C93079059498902 /* Pods_TestUnitSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestUnitSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31B65E28DA200267C1A312A /* Pods_TestUnitSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestUnitSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -259,6 +265,7 @@
 		9749AA7A21CB36F8000CD9B1 /* UploadImageView */ = {
 			isa = PBXGroup;
 			children = (
+				9749AA9F21CB9213000CD9B1 /* UploadCell */,
 				9749AA7B21CB36F8000CD9B1 /* UploadImageController.swift */,
 				9749AA7C21CB36F8000CD9B1 /* UploadImageView.swift */,
 				9749AA7D21CB36F8000CD9B1 /* UploadImageViewModel.swift */,
@@ -305,8 +312,18 @@
 			isa = PBXGroup;
 			children = (
 				9749AA9B21CB780C000CD9B1 /* FoscusMarkLayer.swift */,
+				9749AA9D21CB8748000CD9B1 /* IndicateLayer.swift */,
 			);
 			path = MarkLayer;
+			sourceTree = "<group>";
+		};
+		9749AA9F21CB9213000CD9B1 /* UploadCell */ = {
+			isa = PBXGroup;
+			children = (
+				9749AAA021CB923A000CD9B1 /* UploadCell.swift */,
+				9749AAA121CB923A000CD9B1 /* UploadCell.xib */,
+			);
+			path = UploadCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +438,7 @@
 				9749AA9921CB4315000CD9B1 /* SwipeChoosenViewCell.xib in Resources */,
 				9749AA4921CB35EF000CD9B1 /* Assets.xcassets in Resources */,
 				9749AA7F21CB36F9000CD9B1 /* ButtonCameraAction.xib in Resources */,
+				9749AAA321CB923A000CD9B1 /* UploadCell.xib in Resources */,
 				9749AA4721CB35ED000CD9B1 /* Main.storyboard in Resources */,
 				9749AA9421CB418B000CD9B1 /* SwipeChoosen.xib in Resources */,
 			);
@@ -556,6 +574,8 @@
 				9749AA8121CB36F9000CD9B1 /* MainCameraView.swift in Sources */,
 				9749AA8021CB36F9000CD9B1 /* MainCameraController.swift in Sources */,
 				9749AA9321CB418B000CD9B1 /* SwipeChoosen.swift in Sources */,
+				9749AAA221CB923A000CD9B1 /* UploadCell.swift in Sources */,
+				9749AA9E21CB8748000CD9B1 /* IndicateLayer.swift in Sources */,
 				9749AA9821CB4315000CD9B1 /* SwipeChoosenViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

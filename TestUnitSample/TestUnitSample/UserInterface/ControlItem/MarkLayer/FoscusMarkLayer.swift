@@ -27,7 +27,7 @@ class FoscusMarkLayer: UIView {
       ctx.fillPath()
       let smallRect = CGRect(x: padding, y: padding, width: Double(rect.size.width) - (padding * 2.0), height: Double(rect.size.height) - (padding * 2.0))
       createAHole(rectParent: rect, smallRect: smallRect)
-      createLineFocus(withPading: CGFloat(padding + padding), andDistance: CGFloat(100.0))
+      createLineFocus(withPading: CGFloat(padding + padding), andDistance: CGFloat(100.0),context:ctx)   
       UIGraphicsEndImageContext()
     }
   }
@@ -40,15 +40,9 @@ class FoscusMarkLayer: UIView {
     layer.fillRule = .evenOdd
     self.layer.mask = layer
   }
-  func createLineFocus(withPading padding:CGFloat,andDistance distance:CGFloat){
+  func createLineFocus(withPading padding:CGFloat,andDistance distance:CGFloat,context:CGContext){
     let farDistance = padding + distance
-    let layer = CAShapeLayer()
-    let path = CGMutablePath()
-    path.move(to: CGPoint(x: 100, y: 100))
-    path.addLine(to: CGPoint(x: 100, y: 100))
-    path.addLine(to: CGPoint(x: 200, y: 200))
-    layer.path = path
-    layer.fillColor = UIColor.green.cgColor
-    self.layer.addSublayer(layer)
+   
+   
   }
 }

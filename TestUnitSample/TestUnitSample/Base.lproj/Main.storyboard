@@ -234,8 +234,8 @@
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cr3-8K-JvR">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pnu-Qa-EOh">
+                                                <color key="backgroundColor" red="0.71372549019999998" green="0.47450980390000003" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Pnu-Qa-EOh">
                                                     <size key="itemSize" width="63" height="46"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -251,6 +251,10 @@
                                                         </view>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="hTG-qB-ieI" id="m2n-zm-jtt"/>
+                                                    <outlet property="delegate" destination="hTG-qB-ieI" id="foe-12-SVR"/>
+                                                </connections>
                                             </collectionView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -287,6 +291,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GKZ-L0-hK5"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionViewMain" destination="cr3-8K-JvR" id="H5H-LO-cLd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwc-24-2o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

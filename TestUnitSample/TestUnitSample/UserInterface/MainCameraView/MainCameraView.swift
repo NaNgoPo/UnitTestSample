@@ -20,7 +20,8 @@ class MainCameraView: UIViewController {
   @IBOutlet weak var cameraDisplay: UIView!
   var mainCameraController = MainCameraController()
   let swipeableChoosen = SwipeChoosen()
-  let focusLayerDrawing = FoscusMarkLayer(frame: CGRect.zero)
+  private let focusLayerDrawing = FoscusMarkLayer(frame: CGRect.zero)
+  private let indicateLayerDrawing = IndicateLayer(frame: CGRect.zero)
   @IBOutlet weak var labelTimeCounting: UILabel!
   @IBOutlet weak var holderSwipeableView: UIView!
   @IBOutlet weak var buttonFlash: UIButton!
@@ -50,11 +51,13 @@ class MainCameraView: UIViewController {
     self.holderSwipeableView.addSubview(self.swipeableChoosen.view)
     focusLayerDrawing.backgroundColor = UIColor.clear
     self.focusLayer.addSubview(focusLayerDrawing)
+    self.focusLayer.addSubview(indicateLayerDrawing)
   }
   override func viewDidLayoutSubviews() {
     self.swipeableChoosen.view.frame = CGRect(origin: .zero, size: self.holderSwipeableView.frame.size)
     self.swipeableChoosen.snapToCorrectPossition()
     focusLayerDrawing.frame = CGRect(origin: .zero, size: self.focusLayer.frame.size)
+    indicateLayerDrawing.frame = CGRect(origin: .zero, size: self.focusLayer.frame.size)
   }
   //MARK: UI-Test
   override func viewDidAppear(_ animated: Bool) {

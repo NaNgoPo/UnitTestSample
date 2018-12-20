@@ -17,9 +17,11 @@ enum FetchError: Error {
 }
 
 class UploadImageViewModel: NSObject {
+  var listOfChooseImages = [-1,-1,-1,-1,-1]// fixed 5 value
   private var photosRepo = PhotosRepository()
   var(getAllImageSignal,observerFetch) = Signal<PHFetchResult<PHAsset>, FetchError>.pipe()
   var inputSignal:Signal<PHFetchResult<PHAsset>, FetchError>.Observer?
+  var assetFounded:PHFetchResult<PHAsset>?
   
   override init() {
     inputSignal = observerFetch
@@ -40,6 +42,7 @@ class UploadImageViewModel: NSObject {
         let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
         print("Found \(allPhotos.count) images")
         inputSignal.send(value: allPhotos)
+        self.assetFounded = allPhotos
       case .denied, .restricted:
         inputSignal.send(error: FetchError.noPermission("no permission"))
         print("")
