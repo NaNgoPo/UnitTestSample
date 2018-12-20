@@ -1,0 +1,28 @@
+PODS:
+  - CameraManager (4.3.0)
+  - ReactiveCocoa (8.0.2):
+    - ReactiveSwift (~> 4.0)
+  - ReactiveSwift (4.0.0):
+    - Result (~> 4.0)
+  - Result (4.0.0)
+
+DEPENDENCIES:
+  - CameraManager (~> 4.3)
+  - ReactiveCocoa
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - CameraManager
+    - ReactiveCocoa
+    - ReactiveSwift
+    - Result
+
+SPEC CHECKSUMS:
+  CameraManager: 607b60ad5c84bfa481ebf82eb4cd77a8d1f0bc39
+  ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
+  ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+
+PODFILE CHECKSUM: 194258903448baeca451e9da1a2d3b0fd5b6a068
+
+COCOAPODS: 1.5.3
