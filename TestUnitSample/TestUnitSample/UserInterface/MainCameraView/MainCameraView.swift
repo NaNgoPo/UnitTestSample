@@ -19,7 +19,12 @@ class MainCameraView: UIViewController {
    */
   @IBOutlet weak var cameraDisplay: UIView!
   var mainCameraController = MainCameraController()
+  let swipeableChoosen = SwipeChoosen()
+  let focusLayerDrawing = FoscusMarkLayer(frame: CGRect.zero)
+  @IBOutlet weak var labelTimeCounting: UILabel!
+  @IBOutlet weak var holderSwipeableView: UIView!
   @IBOutlet weak var buttonFlash: UIButton!
+  @IBOutlet weak var focusLayer: UIView!
   override func viewDidLoad() {
     super.viewDidLoad()
     let flashSignalObs = Signal<CameraFlashMode, NoError>.Observer { (event) in
@@ -31,6 +36,25 @@ class MainCameraView: UIViewController {
       }
     }
     mainCameraController.flashModeSignal.observe(flashSignalObs)
+    
+    let swipeSignal =  Signal<ChoosenMode, NoError>.Observer { (event) in
+      switch event {
+      case let .value(swipeInfo):
+        self.changeModeCaptureLayout(mode:swipeInfo)
+      default:
+        break
+      }
+    }
+    swipeableChoosen.swipeSignal.observe(swipeSignal)
+    
+    self.holderSwipeableView.addSubview(self.swipeableChoosen.view)
+    focusLayerDrawing.backgroundColor = UIColor.clear
+    self.focusLayer.addSubview(focusLayerDrawing)
+  }
+  override func viewDidLayoutSubviews() {
+    self.swipeableChoosen.view.frame = CGRect(origin: .zero, size: self.holderSwipeableView.frame.size)
+    self.swipeableChoosen.snapToCorrectPossition()
+    focusLayerDrawing.frame = CGRect(origin: .zero, size: self.focusLayer.frame.size)
   }
   //MARK: UI-Test
   override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +72,20 @@ class MainCameraView: UIViewController {
     self.performSegue(withIdentifier: "showPopup", sender: self)
   }
   //MARK: private process funtion
+  /**
+   Change the capture mode of application
+   - parameters:
+   - mode: the defination of app
+   */
+  private func changeModeCaptureLayout(mode:ChoosenMode){
+    mainCameraController.switchModeCapture(mode: mode.rawValue)
+    labelTimeCounting.isHidden = (mode == .Camera)
+  }
+  /**
+   Change the flash behaviorof application
+   - parameters:
+   - flashStyle: the flash mode style
+   */
   private func changeFlashLayout(flashStyle:CameraFlashMode){
     var cameraIcon = "ic_flash_off"
     switch flashStyle {
@@ -64,8 +102,8 @@ class MainCameraView: UIViewController {
   }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showPopup"{
-//      var vc = segue.destination as! UploadImageView
+      //      var vc = segue.destination as! UploadImageView
     }
   }
-
+  
 }

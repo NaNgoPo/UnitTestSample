@@ -17,15 +17,19 @@ enum FetchError: Error {
 }
 
 class UploadImageViewModel: NSObject {
+  private var photosRepo = PhotosRepository()
   var(getAllImageSignal,observerFetch) = Signal<PHFetchResult<PHAsset>, FetchError>.pipe()
   var inputSignal:Signal<PHFetchResult<PHAsset>, FetchError>.Observer?
   
   override init() {
     inputSignal = observerFetch
   }
-  
+  convenience init(withPhotoRepo:PhotosRepository) {//
+    self.init()
+    photosRepo = withPhotoRepo
+  }
   func getAllImagesForDisplay(){
-    PHPhotoLibrary.requestAuthorization {[weak self] status in
+    photosRepo.getAccessPhotosPermission { [weak self] status in
       guard let self = self,
         let inputSignal = self.inputSignal else{
           return

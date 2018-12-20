@@ -13,7 +13,7 @@
         <!--Main Camera View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainCameraView" customModule="CamVideoRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainCameraView" customModule="TestUnitSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,13 +22,17 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQT-At-6om">
+                                <rect key="frame" x="0.0" y="84" width="375" height="367.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYb-zP-jaa" userLabel="PreviewLayer">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hA8-qX-3GH" userLabel="TopViewLayer">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <subviews>
-                                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRW-RE-rbF" userLabel="BackGroundLayer">
+                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WRW-RE-rbF" userLabel="BackGroundLayer">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -56,7 +60,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="oGv-qM-lb1" firstAttribute="bottom" secondItem="5ET-r9-2bs" secondAttribute="bottom" id="0gC-6K-nLk"/>
                                             <constraint firstItem="oGv-qM-lb1" firstAttribute="width" secondItem="5ET-r9-2bs" secondAttribute="width" id="3bm-YK-laF"/>
@@ -78,7 +82,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMd-31-aGf" userLabel="BottomViewLayer">
                                         <rect key="frame" x="0.0" y="431.5" width="375" height="215.5"/>
                                         <subviews>
-                                            <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-4W-LY8" userLabel="BackGroundLayer">
+                                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wc8-4W-LY8" userLabel="BackGroundLayer">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -135,7 +139,7 @@
                                                     <constraint firstItem="CFk-R8-Jo0" firstAttribute="width" secondItem="2Qd-Za-fYm" secondAttribute="width" multiplier="1/2" id="yhP-4g-7Dg"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5V-mv-k4d">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5V-mv-k4d" userLabel="SwipeChoosenBar">
                                                 <rect key="frame" x="0.0" y="171.5" width="375" height="44"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -158,32 +162,13 @@
                                             <constraint firstItem="wc8-4W-LY8" firstAttribute="leading" secondItem="jMd-31-aGf" secondAttribute="leading" id="saB-2F-WMZ"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lg8-xH-UgE" userLabel="FocusView">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="367.5"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_focus" translatesAutoresizingMaskIntoConstraints="NO" id="iBP-wV-geF">
-                                                <rect key="frame" x="20" y="20" width="335" height="327.5"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="iBP-wV-geF" secondAttribute="trailing" constant="20" id="4os-sv-KEF"/>
-                                            <constraint firstItem="iBP-wV-geF" firstAttribute="top" secondItem="Lg8-xH-UgE" secondAttribute="top" constant="20" id="6ov-SR-0PG"/>
-                                            <constraint firstItem="iBP-wV-geF" firstAttribute="leading" secondItem="Lg8-xH-UgE" secondAttribute="leading" constant="20" id="SQT-gB-gFA"/>
-                                            <constraint firstAttribute="bottom" secondItem="iBP-wV-geF" secondAttribute="bottom" constant="20" id="ZPY-R4-Ve1"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="hA8-qX-3GH" secondAttribute="trailing" id="8yI-Wy-Ize"/>
-                                    <constraint firstItem="Lg8-xH-UgE" firstAttribute="top" secondItem="hA8-qX-3GH" secondAttribute="bottom" id="Gpx-BD-VT4"/>
-                                    <constraint firstItem="Lg8-xH-UgE" firstAttribute="bottom" secondItem="jMd-31-aGf" secondAttribute="top" id="Ljf-wg-GQp"/>
                                     <constraint firstAttribute="bottom" secondItem="jMd-31-aGf" secondAttribute="bottom" id="VEx-SI-AA1"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lg8-xH-UgE" secondAttribute="trailing" id="Z32-kh-LGX"/>
                                     <constraint firstItem="jMd-31-aGf" firstAttribute="leading" secondItem="BYb-zP-jaa" secondAttribute="leading" id="cwJ-cg-tBh"/>
                                     <constraint firstItem="jMd-31-aGf" firstAttribute="height" secondItem="BYb-zP-jaa" secondAttribute="height" multiplier="1/3" id="dTN-Fm-tHA"/>
-                                    <constraint firstItem="Lg8-xH-UgE" firstAttribute="leading" secondItem="BYb-zP-jaa" secondAttribute="leading" id="lot-CL-uan"/>
                                     <constraint firstAttribute="trailing" secondItem="jMd-31-aGf" secondAttribute="trailing" id="mgs-xQ-ifs"/>
                                     <constraint firstItem="hA8-qX-3GH" firstAttribute="leading" secondItem="BYb-zP-jaa" secondAttribute="leading" id="vIv-mc-erC"/>
                                     <constraint firstItem="hA8-qX-3GH" firstAttribute="top" secondItem="BYb-zP-jaa" secondAttribute="top" id="zqT-XJ-PLw"/>
@@ -194,10 +179,14 @@
                         <constraints>
                             <constraint firstItem="Va9-cg-kET" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2iX-7B-xhr"/>
                             <constraint firstItem="BYb-zP-jaa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4na-nY-N4h"/>
+                            <constraint firstItem="RQT-At-6om" firstAttribute="leading" secondItem="Va9-cg-kET" secondAttribute="leading" id="Bga-PE-e6u"/>
                             <constraint firstItem="Va9-cg-kET" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FfO-yd-cHv"/>
+                            <constraint firstItem="RQT-At-6om" firstAttribute="trailing" secondItem="Va9-cg-kET" secondAttribute="trailing" id="RpE-Pj-hzU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Va9-cg-kET" secondAttribute="bottom" id="Sk1-KZ-3Ua"/>
+                            <constraint firstItem="RQT-At-6om" firstAttribute="top" secondItem="hA8-qX-3GH" secondAttribute="bottom" id="U9F-Oe-8pj"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BYb-zP-jaa" secondAttribute="bottom" id="a2N-JC-ue9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Va9-cg-kET" secondAttribute="trailing" id="b7w-9C-Asb"/>
+                            <constraint firstItem="RQT-At-6om" firstAttribute="bottom" secondItem="jMd-31-aGf" secondAttribute="top" id="hpV-QW-Mdp"/>
                             <constraint firstItem="BYb-zP-jaa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="t11-xS-nWI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BYb-zP-jaa" secondAttribute="trailing" id="vSa-h9-jEQ"/>
                         </constraints>
@@ -206,16 +195,20 @@
                     <connections>
                         <outlet property="buttonFlash" destination="5ET-r9-2bs" id="EEY-EP-2vb"/>
                         <outlet property="cameraDisplay" destination="Va9-cg-kET" id="NTn-mb-bkd"/>
+                        <outlet property="focusLayer" destination="RQT-At-6om" id="xaB-C6-rIn"/>
+                        <outlet property="holderSwipeableView" destination="s5V-mv-k4d" id="oCV-pm-bI5"/>
+                        <outlet property="labelTimeCounting" destination="dCO-9H-hSS" id="ach-ZP-1iW"/>
                         <segue destination="hTG-qB-ieI" kind="presentation" identifier="showPopup" modalPresentationStyle="overCurrentContext" id="9m1-Jb-yr4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="346" y="11"/>
         </scene>
         <!--Upload Image View-->
         <scene sceneID="4Np-Hn-0E6">
             <objects>
-                <viewController id="hTG-qB-ieI" customClass="UploadImageView" customModule="CamVideoRecord" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hTG-qB-ieI" customClass="UploadImageView" customModule="TestUnitSample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4D-lw-jTV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -297,11 +290,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lwc-24-2o3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
+            <point key="canvasLocation" x="-398" y="75"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bg_focus" width="256" height="256"/>
         <image name="ic_flash_auto" width="60" height="60"/>
         <image name="ic_gallery" width="64" height="64"/>
         <image name="ic_switch_camera" width="60" height="60"/>
