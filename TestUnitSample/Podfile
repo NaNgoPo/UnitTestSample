@@ -6,6 +6,8 @@ target 'TestUnitSample' do
   use_frameworks!
   pod 'ReactiveCocoa'
   pod 'CameraManager', '~> 4.3'
+  pod 'iCarousel', '~> 1.8'
+  pod 'Stellar', :git => 'https://github.com/AugustRush/Stellar.git'
   # Pods for TestUnitSample
 
   target 'TestUnitSampleTests' do
@@ -19,7 +21,7 @@ target 'TestUnitSample' do
   end
   post_install do |installer|
     installer.pods_project.targets.each do |target|
-      if ['CameraManager'].include? target.name
+      if ['CameraManager','Stellar'].include? target.name
         target.build_configurations.each do |config|
           config.build_settings['SWIFT_VERSION'] = '4.0'
         end

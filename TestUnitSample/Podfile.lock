@@ -1,28 +1,44 @@
 PODS:
   - CameraManager (4.3.0)
+  - iCarousel (1.8.3)
   - ReactiveCocoa (8.0.2):
     - ReactiveSwift (~> 4.0)
   - ReactiveSwift (4.0.0):
     - Result (~> 4.0)
   - Result (4.0.0)
+  - Stellar (0.67)
 
 DEPENDENCIES:
   - CameraManager (~> 4.3)
+  - iCarousel (~> 1.8)
   - ReactiveCocoa
+  - Stellar (from `https://github.com/AugustRush/Stellar.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - CameraManager
+    - iCarousel
     - ReactiveCocoa
     - ReactiveSwift
     - Result
 
+EXTERNAL SOURCES:
+  Stellar:
+    :git: https://github.com/AugustRush/Stellar.git
+
+CHECKOUT OPTIONS:
+  Stellar:
+    :commit: abecca78812d3235683fdddf358ba8d5c4421352
+    :git: https://github.com/AugustRush/Stellar.git
+
 SPEC CHECKSUMS:
   CameraManager: 607b60ad5c84bfa481ebf82eb4cd77a8d1f0bc39
+  iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
   ReactiveCocoa: fbd26e9ba60e98417ee47433e59465a98ed9da0f
   ReactiveSwift: a2bb9ace428a109e9c0209615645d9d286c8c433
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  Stellar: df980becd194eeb62d623af097582da0ef2219b9
 
-PODFILE CHECKSUM: 194258903448baeca451e9da1a2d3b0fd5b6a068
+PODFILE CHECKSUM: 4112e8edbdd38c107c5ba9c2308011a463d7d3dc
 
 COCOAPODS: 1.5.3

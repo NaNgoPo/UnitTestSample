@@ -22,10 +22,14 @@ class MainCameraView: UIViewController {
   let swipeableChoosen = SwipeChoosen()
   private let focusLayerDrawing = FoscusMarkLayer(frame: CGRect.zero)
   private let indicateLayerDrawing = IndicateLayer(frame: CGRect.zero)
+  private let buttonCenter = ButtonCameraAction()
+  
   @IBOutlet weak var labelTimeCounting: UILabel!
   @IBOutlet weak var holderSwipeableView: UIView!
   @IBOutlet weak var buttonFlash: UIButton!
   @IBOutlet weak var focusLayer: UIView!
+  @IBOutlet weak var viewButton: UIView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     let flashSignalObs = Signal<CameraFlashMode, NoError>.Observer { (event) in
@@ -52,8 +56,49 @@ class MainCameraView: UIViewController {
     focusLayerDrawing.backgroundColor = UIColor.clear
     self.focusLayer.addSubview(focusLayerDrawing)
     self.focusLayer.addSubview(indicateLayerDrawing)
+    self.viewButton.addSubview(buttonCenter.view)
+    
+    self.viewButton.backgroundColor = UIColor.clear
+    self.setupRecordingTimeSignal()
+    self.setUpButtonAction()
+  }
+  private func setUpButtonAction(){
+    let observerButtonAction = Signal<ButtonSignal, NoError>.Observer{ [weak self] event in
+      guard let self = self else{
+        return
+      }
+      switch event {
+      case let .value(signal):
+        self.requestProcessAction()
+      default:
+        break
+      }
+    }
+    self.buttonCenter.buttonObserve.observe(observerButtonAction)
+  }
+  private func setupRecordingTimeSignal(){
+    let observerRecord = Signal<Double, NoError>.Observer{ [weak self] event in
+      guard let self = self else{
+        return
+      }
+      switch event {
+      case let .value(recordSeconds):
+        DispatchQueue.main.async {
+          if(recordSeconds > 0){
+            let secRecord = String(format: "%02d", Int(recordSeconds))
+            self.labelTimeCounting.text = "00:00:\(secRecord)"
+          }else{
+            self.labelTimeCounting.text = "00:00:00"
+          }
+        }
+      default:
+        break
+      }
+    }
+    self.mainCameraController.recordingTimerSignal.observe(observerRecord)
   }
   override func viewDidLayoutSubviews() {
+    buttonCenter.view.frame = CGRect(origin: .zero, size: self.viewButton.frame.size)
     self.swipeableChoosen.view.frame = CGRect(origin: .zero, size: self.holderSwipeableView.frame.size)
     self.swipeableChoosen.snapToCorrectPossition()
     focusLayerDrawing.frame = CGRect(origin: .zero, size: self.focusLayer.frame.size)
@@ -71,6 +116,9 @@ class MainCameraView: UIViewController {
     mainCameraController.switchCameraFrontBack()
   }
   
+  func requestProcessAction() {
+    mainCameraController.actionDeviceCamera()
+  }
   @IBAction func buttonGalleryDidPressed(_ sender: Any) {
     self.performSegue(withIdentifier: "showPopup", sender: self)
   }
@@ -83,6 +131,7 @@ class MainCameraView: UIViewController {
   private func changeModeCaptureLayout(mode:ChoosenMode){
     mainCameraController.switchModeCapture(mode: mode.rawValue)
     labelTimeCounting.isHidden = (mode == .Camera)
+    self.buttonCenter.setCameraMode(mode: mode)
   }
   /**
    Change the flash behaviorof application

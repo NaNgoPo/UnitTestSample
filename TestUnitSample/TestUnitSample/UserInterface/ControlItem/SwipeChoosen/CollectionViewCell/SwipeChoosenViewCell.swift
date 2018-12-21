@@ -10,7 +10,7 @@ import UIKit
 
 class SwipeChoosenViewCell: UICollectionViewCell {
   let highlightColor = UIColor.white
-  let unHighlightColor = UIColor.red
+  let unHighlightColor = UIColor.init(red: 204.0 / 255.0, green: 77.0 / 255.0, blue: 83.0 / 255.0, alpha: 1.0)
   @IBOutlet weak var labelCenter: UILabel!
   override func awakeFromNib() {
         super.awakeFromNib()

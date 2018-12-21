@@ -13,29 +13,20 @@ import Photos
 
 class UploadImageView: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
   private let uploadingImageController = UploadImageController()
+  private let imageSelectedView = SwipeImageList()
   @IBOutlet weak var collectionViewMain: UICollectionView!
+  @IBOutlet weak var labelIndicated: UILabel!
+  @IBOutlet weak var carouselHolder: UIView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.collectionViewMain.register(UINib.init(nibName: "UploadCell", bundle: nil), forCellWithReuseIdentifier: "UploadCell")
-    let observerFetchLayout = Signal<PHFetchResult<PHAsset>, FetchError>.Observer{ [weak self] event in
-      guard let self = self else{
-        return
-      }
-      switch event {
-      case let .value(_):
-        print("getAllimages in view")
-        DispatchQueue.main.async {
-           self.collectionViewMain.reloadData()
-        }
-       
-      case let .failed(_):
-        print("error")
-      default:
-        break
-      }
-    }
-    self.uploadingImageController.imageFetchSignal.observe(observerFetchLayout)
+    self.setupFetchSignal()
+    self.setupImageListSignal()
+    carouselHolder.addSubview(imageSelectedView.view)
+  }
+  override func viewDidLayoutSubviews() {
+    imageSelectedView.view.frame = CGRect(origin: .zero, size: carouselHolder.frame.size)
   }
   @IBAction func buttonCancelDidPressed(_ sender: Any) {
     self.dismiss(animated: true) {
@@ -62,13 +53,53 @@ class UploadImageView: UIViewController,UICollectionViewDataSource,UICollectionV
     return cell
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    uploadingImageController.requestProcessTap(index: indexPath.row)
-    collectionView.reloadData()
+    if let concreteAssetResult = uploadingImageController.viewModel.assetFounded{
+      uploadingImageController.requestProcessTap(index: indexPath.row,withAssetList:concreteAssetResult)
+      collectionView.reloadData()
+    }
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     var size = collectionView.frame.size
     size.width = size.width / 4.0
     size.height = size.height / 2.0
     return size
+  }
+  private func setupImageListSignal(){
+    let observerImageSelected = Signal<[PHAsset], NoError>.Observer{ [weak self] event in
+      guard let self = self else{
+        return
+      }
+      switch event {
+      case let .value(resultInfo):
+        print("Changed image List")
+        self.imageSelectedView.setListImage(assets:resultInfo)
+      case .failed(_):
+        print("error")
+      default:
+        break
+      }
+    }
+    
+    self.uploadingImageController.imageListChangedSignal.observe(observerImageSelected)
+  }
+  private func setupFetchSignal(){
+    let observerFetchLayout = Signal<PHFetchResult<PHAsset>, FetchError>.Observer{ [weak self] event in
+      guard let self = self else{
+        return
+      }
+      switch event {
+      case .value(_):
+        print("getAllimages in view")
+        DispatchQueue.main.async {
+          self.collectionViewMain.reloadData()
+        }
+        
+      case .failed(_):
+        print("error")
+      default:
+        break
+      }
+    }
+    self.uploadingImageController.imageFetchSignal.observe(observerFetchLayout)
   }
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwipeImageList" customModule="TestUnitSample" customModuleProvider="target">
+            <connections>
+                <outlet property="carouselView" destination="i2G-PW-XP1" id="ewV-7g-PT1"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i2G-PW-XP1" customClass="iCarousel">
+                    <rect key="frame" x="50" y="25" width="275" height="353"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="lNH-Xx-2EK"/>
+                        <outlet property="delegate" destination="-1" id="r3e-a0-evk"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="i2G-PW-XP1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="27Y-TI-xiA"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="i2G-PW-XP1" secondAttribute="trailing" constant="50" id="GhS-iY-Vev"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="i2G-PW-XP1" secondAttribute="bottom" constant="25" id="NkW-CJ-I5w"/>
+                <constraint firstItem="i2G-PW-XP1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="fWk-6U-XBa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="130.40000000000001" y="34.632683658170919"/>
+        </view>
+    </objects>
+</document>

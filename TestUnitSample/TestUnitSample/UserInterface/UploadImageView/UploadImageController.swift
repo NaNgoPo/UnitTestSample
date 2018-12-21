@@ -15,6 +15,7 @@ class UploadImageController: NSObject {
   var imageFetchSignalObs:Signal<PHFetchResult<PHAsset>, FetchError>.Observer?
   
   var (imageFetchSignal,imageFetchInput) = Signal<PHFetchResult<PHAsset>, FetchError>.pipe()
+  var (imageListChangedSignal,imageListChangedInput) = Signal<[PHAsset], NoError>.pipe()
   
   let viewModel = UploadImageViewModel()
   override init() {
@@ -25,10 +26,9 @@ class UploadImageController: NSObject {
       }
       switch event {
       case let .value(images):
-        print("getAllimages")
         self.imageFetchInput.send(value: images)
       case let .failed(Error):
-        print("error")
+        print("Error with information \(Error.localizedDescription)")
       default:
         break
       }
@@ -40,13 +40,20 @@ class UploadImageController: NSObject {
     viewModel.getAllImagesForDisplay()
   }
   
-  func requestProcessTap(index valueNeedCheck:Int) {
+  func requestProcessTap(index valueNeedCheck:Int,withAssetList listAssetOriginal:PHFetchResult<PHAsset>) {
     let tryToFindIndex = viewModel.listOfChooseImages.firstIndex(of: valueNeedCheck)
     if let founded = tryToFindIndex{
       self.unChooseAnImageAt(index: founded)
     }else{
       self.chooseAnImageAt(index: valueNeedCheck)
     }
+    let listOfImageSelected  = viewModel.listOfChooseImages.filter { (value) -> Bool in
+      return value != -1
+    }
+    print("current selected images \(listOfImageSelected)")
+    let listOfAsset = listAssetOriginal.objects(at: IndexSet(listOfImageSelected))
+    // send the signal that indicated the list of asset currently in select
+    imageListChangedInput.send(value: listOfAsset)
   }
   private func chooseAnImageAt(index:Int){
     let emptySlotIndex = viewModel.listOfChooseImages.firstIndex(of: -1)
@@ -57,7 +64,6 @@ class UploadImageController: NSObject {
     }
   }
   private func unChooseAnImageAt(index:Int){
-      viewModel.listOfChooseImages[index] = -1
-    print("unselect \(index)")
+    viewModel.listOfChooseImages[index] = -1
   }
 }

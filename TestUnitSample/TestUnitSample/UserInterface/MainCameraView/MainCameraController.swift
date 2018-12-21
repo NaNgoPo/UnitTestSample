@@ -15,9 +15,11 @@ import ReactiveSwift
 class MainCameraController: NSObject {
   //MARK: Private state
   private let cameraManager = CameraManager()
+  
   //MARK: Signal props
   let (flashModeSignal, inputFlashSignal) = Signal<CameraFlashMode, NoError>.pipe()
-  
+  let (recordingTimerSignal, inputRecordTimeSignal) = Signal<Double, NoError>.pipe()
+  var timerDuration:Timer?
   //MARK: PUBLIC FUNC
   /**
    Initial setup all the camera.
@@ -27,6 +29,7 @@ class MainCameraController: NSObject {
     cameraManager.addPreviewLayerToView(cameraHolder)
     cameraManager.flashMode = .off
     self.sendSyncSignal()
+    
   }
   /**
    Switching the flash mode.
@@ -65,6 +68,13 @@ class MainCameraController: NSObject {
   func actionDeviceCamera() {
     if(self.cameraManager.cameraOutputMode == .stillImage){// image mode = capture a picture
       self.capturePic()
+    }else{
+      self.actionVideo()
+    }
+  }
+  deinit {
+    if let timerDuration = self.timerDuration{
+      timerDuration.invalidate()
     }
   }
 }
@@ -77,9 +87,36 @@ extension MainCameraController{
   private func sendSyncSignal(){
     inputFlashSignal.send(value: cameraManager.flashMode)
   }
+  private func actionVideo(){
+    if(!self.isRecording()){
+      self.cameraManager.startRecordingVideo()
+      self.timerDuration = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (time) in
+        self.inputRecordTimeSignal.send(value: self.cameraManager.recordedDuration.seconds)
+      })
+    }else{
+      self.cameraManager.stopVideoRecording { [weak self] (url, error) in
+        guard let self = self else{
+          return
+        }
+        //FileManager.defaultManager().copyItemAtURL(videoURL, toURL: self.myVideoURL, error: &error)
+        if let timerDuration = self.timerDuration{
+          timerDuration.invalidate()
+          self.timerDuration = nil
+          self.inputRecordTimeSignal.send(value: -1.0 )
+        }
+      }
+    }
+  }
+  private func isRecording() -> Bool{
+    if let timerExisted = self.timerDuration{
+      return timerExisted.isValid
+    }
+    return false
+  }
   private func capturePic(){
     self.cameraManager.capturePictureWithCompletion { (image, error) in
       //TODO: catch the callback
     }
   }
+  
 }

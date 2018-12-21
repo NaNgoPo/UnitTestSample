@@ -34,6 +34,9 @@
 		9749AA9E21CB8748000CD9B1 /* IndicateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AA9D21CB8748000CD9B1 /* IndicateLayer.swift */; };
 		9749AAA221CB923A000CD9B1 /* UploadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AAA021CB923A000CD9B1 /* UploadCell.swift */; };
 		9749AAA321CB923A000CD9B1 /* UploadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9749AAA121CB923A000CD9B1 /* UploadCell.xib */; };
+		9749AAA721CC8901000CD9B1 /* SwipeImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AAA521CC8901000CD9B1 /* SwipeImageList.swift */; };
+		9749AAA821CC8901000CD9B1 /* SwipeImageList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9749AAA621CC8901000CD9B1 /* SwipeImageList.xib */; };
+		9749AAAA21CCD2FE000CD9B1 /* ProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9749AAA921CCD2FE000CD9B1 /* ProgressLayer.swift */; };
 		9A15A7D94DD79BB093727EAB /* Pods_TestUnitSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28ED33D17C134FBEA3995AEC /* Pods_TestUnitSample.framework */; };
 		D26788DBE1339FF17DBA89AD /* Pods_TestUnitSampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31B65E28DA200267C1A312A /* Pods_TestUnitSampleUITests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +98,9 @@
 		9749AA9D21CB8748000CD9B1 /* IndicateLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicateLayer.swift; sourceTree = "<group>"; };
 		9749AAA021CB923A000CD9B1 /* UploadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadCell.swift; sourceTree = "<group>"; };
 		9749AAA121CB923A000CD9B1 /* UploadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadCell.xib; sourceTree = "<group>"; };
+		9749AAA521CC8901000CD9B1 /* SwipeImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeImageList.swift; sourceTree = "<group>"; };
+		9749AAA621CC8901000CD9B1 /* SwipeImageList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeImageList.xib; sourceTree = "<group>"; };
+		9749AAA921CCD2FE000CD9B1 /* ProgressLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLayer.swift; sourceTree = "<group>"; };
 		DB8B32341C93079059498902 /* Pods_TestUnitSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestUnitSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31B65E28DA200267C1A312A /* Pods_TestUnitSampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestUnitSampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -236,6 +242,7 @@
 		9749AA7221CB36F8000CD9B1 /* ControlItem */ = {
 			isa = PBXGroup;
 			children = (
+				9749AAA421CC88D8000CD9B1 /* SwipeImageList */,
 				9749AA9A21CB77F6000CD9B1 /* MarkLayer */,
 				9749AA9021CB4168000CD9B1 /* SwipeChoosen */,
 				9749AA7321CB36F8000CD9B1 /* ButtonCameraAction */,
@@ -313,6 +320,7 @@
 			children = (
 				9749AA9B21CB780C000CD9B1 /* FoscusMarkLayer.swift */,
 				9749AA9D21CB8748000CD9B1 /* IndicateLayer.swift */,
+				9749AAA921CCD2FE000CD9B1 /* ProgressLayer.swift */,
 			);
 			path = MarkLayer;
 			sourceTree = "<group>";
@@ -324,6 +332,15 @@
 				9749AAA121CB923A000CD9B1 /* UploadCell.xib */,
 			);
 			path = UploadCell;
+			sourceTree = "<group>";
+		};
+		9749AAA421CC88D8000CD9B1 /* SwipeImageList */ = {
+			isa = PBXGroup;
+			children = (
+				9749AAA521CC8901000CD9B1 /* SwipeImageList.swift */,
+				9749AAA621CC8901000CD9B1 /* SwipeImageList.xib */,
+			);
+			path = SwipeImageList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +453,7 @@
 			files = (
 				9749AA4C21CB35EF000CD9B1 /* LaunchScreen.storyboard in Resources */,
 				9749AA9921CB4315000CD9B1 /* SwipeChoosenViewCell.xib in Resources */,
+				9749AAA821CC8901000CD9B1 /* SwipeImageList.xib in Resources */,
 				9749AA4921CB35EF000CD9B1 /* Assets.xcassets in Resources */,
 				9749AA7F21CB36F9000CD9B1 /* ButtonCameraAction.xib in Resources */,
 				9749AAA321CB923A000CD9B1 /* UploadCell.xib in Resources */,
@@ -540,6 +558,8 @@
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/Stellar/Stellar.framework",
+				"${BUILT_PRODUCTS_DIR}/iCarousel/iCarousel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -549,6 +569,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stellar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iCarousel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -567,7 +589,9 @@
 				9749AA8F21CB3C1E000CD9B1 /* PhotosRepository.swift in Sources */,
 				9749AA7E21CB36F9000CD9B1 /* ButtonCameraAction.swift in Sources */,
 				9749AA8421CB36F9000CD9B1 /* UploadImageView.swift in Sources */,
+				9749AAAA21CCD2FE000CD9B1 /* ProgressLayer.swift in Sources */,
 				9749AA8521CB36F9000CD9B1 /* UploadImageViewModel.swift in Sources */,
+				9749AAA721CC8901000CD9B1 /* SwipeImageList.swift in Sources */,
 				9749AA8221CB36F9000CD9B1 /* MainCameraViewModel.swift in Sources */,
 				9749AA9C21CB780C000CD9B1 /* FoscusMarkLayer.swift in Sources */,
 				9749AA4221CB35ED000CD9B1 /* AppDelegate.swift in Sources */,

@@ -12,6 +12,10 @@ class UploadCell: UICollectionViewCell {
   @IBOutlet weak var imageCenter: UIImageView!
   var thumbnailImage:UIImage?
   var currentAsset:PHAsset?// save the value for full images request
+  
+  let unHighlightColor = UIColor.white
+  let highlightColor = UIColor.init(red: 204.0 / 255.0, green: 77.0 / 255.0, blue: 83.0 / 255.0, alpha: 1.0)
+
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -19,9 +23,9 @@ class UploadCell: UICollectionViewCell {
   func setData(asset:PHAsset,withHightLight:Bool){
     currentAsset = asset
     if(withHightLight){
-      self.backgroundColor = UIColor.red
+      self.backgroundColor = highlightColor
     }else{
-      self.backgroundColor = UIColor.white
+      self.backgroundColor = unHighlightColor
     }
     if(asset.mediaType == .image){
       PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 50, height: 50), contentMode: .default, options: nil) { [weak self] (image, [AnyHashable : Any]?) in
